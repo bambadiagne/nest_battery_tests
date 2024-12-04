@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CommonModule } from './common/common.module';
 import { GlobalExceptionFilter } from './common/filters/http-exception.filter';
 import { APP_FILTER } from '@nestjs/core';
+import { TodoModule } from './todo/todo.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -19,6 +20,7 @@ import configuration from './config/configuration';
       inject: [ConfigService],
     }),
     CommonModule,
+    TodoModule,
   ],
   controllers: [AppController],
   providers: [

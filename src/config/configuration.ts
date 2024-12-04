@@ -7,7 +7,7 @@ export default () => ({
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    entities: [],
     synchronize: process.env.NODE_ENV === 'development',
+    autoLoadEntities: true,
   },
 });
