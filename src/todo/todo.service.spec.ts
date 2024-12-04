@@ -1,10 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TodoService } from './todo.service';
 import { TodoRepository } from './todo.repository';
-import { getRepositoryToken } from '@nestjs/typeorm';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { Todo } from './entities/todo.entity';
-import { createConnection } from 'net';
 import { NotFoundException } from '@nestjs/common';
 
 describe('TodoService', () => {
@@ -39,6 +37,10 @@ describe('TodoService', () => {
     repository = module.get<TodoRepository>(TodoRepository);
     service = module.get<TodoService>(TodoService);
   });
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
@@ -91,7 +93,6 @@ describe('TodoService', () => {
   });
   describe('remove', () => {
     it('should remove a todo', async () => {
-      const todo = mockTodo[0];
       jest
         .spyOn(repository, 'removeTodo')
         .mockResolvedValue({ id: mockTodo[0].id });
