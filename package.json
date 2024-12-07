@@ -25,7 +25,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "npm run migration:run && jest --config ./test/jest-e2e.json --verbose",
-    "test:e2e:docker": "docker-compose --env-file .env.test -p testnestbattery1  -f docker-compose.test.yml up --build  --abort-on-container-exit && docker-compose  -p testnestbattery1  -f docker-compose.test.yml down -v"
+    "test:e2e:docker": "docker-compose --env-file .env.test -p testnestbattery1  -f docker-compose.test.yml up --build  --exit-code-from backend",
+    "test:e2e:docker:local": "docker-compose --env-file .env.test -p testnestbattery1  -f docker-compose.test.yml up --build  --exit-code-from backend && docker-compose  -p testnestbattery1  -f docker-compose.test.yml down -v"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
