@@ -60,7 +60,7 @@ describe('Todos E2E Tests', () => {
         .send(todo)
         .expect(201)
         .expect((res) => {
-          expect(res.body.status).toEqual(mockTodo[0].status);
+          expect(res.body.status).toEqual('INVALID');
         });
     });
     it('should not create a todo with invalid data', () => {
