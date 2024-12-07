@@ -13,10 +13,15 @@ import configuration from './config/configuration';
 @Module({
   imports: [
     LoggerModule,
-    ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      cache: true,
+      load: [configuration],
+    }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (config: ConfigService) => config.get('database'),
+      useFactory: (configService: ConfigService) =>
+        configService.get('database'),
       inject: [ConfigService],
     }),
     CommonModule,
@@ -31,4 +36,6 @@ import configuration from './config/configuration';
     },
   ],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {}
+}
