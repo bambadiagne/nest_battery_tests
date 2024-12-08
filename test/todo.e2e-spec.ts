@@ -1,8 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import {
-  INestApplication,
-  ValidationPipe,
-} from '@nestjs/common';
+import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as request from 'supertest';
 import { AppModule } from 'src/app.module';
@@ -60,7 +57,7 @@ describe('Todos E2E Tests', () => {
         .send(todo)
         .expect(201)
         .expect((res) => {
-          expect(res.body.status).toEqual('INVALID');
+          expect(res.body.status).toEqual(mockTodo[0].status);
         });
     });
     it('should not create a todo with invalid data', () => {
