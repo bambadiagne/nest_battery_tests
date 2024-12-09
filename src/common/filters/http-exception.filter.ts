@@ -6,7 +6,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { CustomLogger } from 'src/logger/logger.service';
+import { CustomLogger } from '../../logger/logger.service';
 interface IErrorMessage {
   status: boolean;
   message: string;
@@ -53,8 +53,6 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     });
   }
   deleteCredentialsFromRequest(body: any) {
-    delete body.password;
-    delete body.image;
     return body;
   }
 }

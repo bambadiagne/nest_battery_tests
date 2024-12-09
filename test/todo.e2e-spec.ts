@@ -2,9 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as request from 'supertest';
-import { AppModule } from 'src/app.module';
+import { AppModule } from '../src/app.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { CreateTodoDto } from 'src/todo/dto/create-todo.dto';
+import { CreateTodoDto } from '../src/todo/dto/create-todo.dto';
 
 describe('Todos E2E Tests', () => {
   const mockTodo = [
@@ -17,9 +17,7 @@ describe('Todos E2E Tests', () => {
     { id: 2, title: 'Create a Todo Entity', status: 'DONE' },
   ];
   let app: INestApplication;
-  let configService: ConfigService;
   beforeAll(async () => {
-    configService = new ConfigService();
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [
         AppModule,

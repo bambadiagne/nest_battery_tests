@@ -19,7 +19,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: npm install
+      - run: npm ci
+      - name: Run linting
+        run: npm run lint:check
+        continue-on-error: false
       - name: Run unit tests & integration tests
         run: npm run test
         continue-on-error: false
