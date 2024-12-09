@@ -6,11 +6,11 @@ import {
   Patch,
   Param,
   Delete,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
-import { ParseIntPipe } from '@nestjs/common';
 
 @Controller('todos')
 export class TodoController {
